@@ -1,4 +1,5 @@
 from fabric.api import *
+from fabric.operations import local as lrun, run
 from fabric.operations import  put
 import time
 import urllib2
@@ -15,6 +16,9 @@ env.user = 'vikas'
 env.shell = "/bin/sh -c"
 env.use_ssh_config = True
 
-def deploy_test():
+def localhost():
+  env.run = lrun
   env.hosts = ['localhost']
+
+def deploy_test():
   run('uname -a')
